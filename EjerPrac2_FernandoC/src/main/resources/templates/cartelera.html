@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cartelera</title>
+</head>
+<body>
+
+<h1>Cartelera de Funciones</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Pelicula/Obra</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Sala</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="funcion : ${funciones}">
+            <td th:text="${funcion.pelicula.titulo}"></td>
+            <td th:text="${funcion.pelicula.tipo}"></td>
+            <td th:text="${funcion.fecha}"></td>
+            <td th:text="${funcion.hora}"></td>
+            <td th:text="${funcion.sala}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
