@@ -29,17 +29,26 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/contacto", "/cartelera", "/css/**", "/js/**").permitAll()
                 .requestMatchers("/gestion/**").hasAuthority("ADMIN")
+                .requestMatchers("/reservas/**").hasAuthority("USUARIO")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")
-                .defaultSuccessUrl("/", true)
+                .successHandler((request, response, authentication) -> {
+                    String rol = authentication.getAuthorities().iterator().next().getAuthority();
+                    if ("ADMIN".equals(rol)) {
+                        response.sendRedirect("/gestion/peliculas");
+                    } else {
+                        response.sendRedirect("/");
+                    }
+                })
                 .permitAll()
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
             );
+
         return http.build();
     }
 
@@ -61,4 +70,3 @@ public class SecurityConfig {
         return authProvider;
     }
 }
-
