@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Cartelera</title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <h1>Cartelera de Funciones</h1>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Tipo</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Sala</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="funcion : ${funciones}">
-                    <td th:text="${funcion.pelicula.titulo}">Título</td>
-                    <td th:text="${funcion.pelicula.tipo}">Tipo</td>
-                    <td th:text="${funcion.fecha}">Fecha</td>
-                    <td th:text="${funcion.hora}">Hora</td>
-                    <td th:text="${funcion.sala}">Sala</td>
-                </tr>
-            </tbody>
-        </table>
-    </body>
-</html>
+<head th:replace="fragments/header :: header">
+    <title>Cartelera - Cine Teatro</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
 
+<div class="contenido">
+    <h2>Cartelera de Funciones</h2>
+    <p style="text-align: center;">Consulta la programación de películas y obras disponibles.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Sala</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="funcion : ${funciones}">
+                <td th:text="${funcion.pelicula.titulo}">Película</td>
+                <td th:text="${funcion.pelicula.tipo}">Tipo</td>
+                <td th:text="${funcion.fecha}">Fecha</td>
+                <td th:text="${funcion.hora}">Hora</td>
+                <td th:text="${funcion.sala}">Sala</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

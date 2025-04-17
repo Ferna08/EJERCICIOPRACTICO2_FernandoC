@@ -17,3 +17,4 @@ public interface PeliculaService {
     Pelicula obtenerPorId(int id);
     void guardar(Pelicula pelicula);
     void eliminar(int id);
+}

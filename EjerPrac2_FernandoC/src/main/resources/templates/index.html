@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Inicio - Cine Teatro</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="contenido">
+    <h2>Bienvenido al Cine Teatro</h2>
+    <p style="text-align: center;">Explora las películas y obras disponibles, reserva tus entradas y disfruta de la mejor experiencia cinematográfica.</p>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/TU3kJhb0dM0"
+            title="Tráiler de presentación"
+            frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
 </html>

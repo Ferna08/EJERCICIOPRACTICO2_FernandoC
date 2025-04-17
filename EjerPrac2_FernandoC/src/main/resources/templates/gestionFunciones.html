@@ -1,15 +1,52 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Gestión de Funciones</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="contenido">
+    <h2>Gestión de Funciones</h2>
+
+    <form th:action="@{/gestion/funciones/guardar}" method="post">
+        <label for="pelicula">Película/Obra:</label>
+        <select id="pelicula" name="id_pelicula">
+            <option th:each="pelicula : ${peliculas}" th:value="${pelicula.id}" th:text="${pelicula.titulo}"></option>
+        </select>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" required>
+
+        <label for="sala">Sala:</label>
+        <input type="text" id="sala" name="sala" required>
+
+        <button type="submit">Agregar Función</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Película</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Sala</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="funcion : ${funciones}">
+                <td th:text="${funcion.pelicula.titulo}">Película</td>
+                <td th:text="${funcion.fecha}">Fecha</td>
+                <td th:text="${funcion.hora}">Hora</td>
+                <td th:text="${funcion.sala}">Sala</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
 </html>

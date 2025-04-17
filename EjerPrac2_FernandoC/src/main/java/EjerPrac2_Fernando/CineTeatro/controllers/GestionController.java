@@ -4,7 +4,19 @@
  */
 
 package EjerPrac2_Fernando.CineTeatro.controllers;
-
+import EjerPrac2_Fernando.CineTeatro.domain.Funcion;
+import EjerPrac2_Fernando.CineTeatro.domain.Pelicula;
+import EjerPrac2_Fernando.CineTeatro.service.FuncionService;
+import EjerPrac2_Fernando.CineTeatro.service.PeliculaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.RequestParam;
+import EjerPrac2_Fernando.CineTeatro.domain.*;
+import EjerPrac2_Fernando.CineTeatro.service.*;
 /**
  *
  * @author ferna
@@ -45,4 +57,3 @@ public class GestionController {
         return "redirect:/gestion/funciones";
     }
 }
-

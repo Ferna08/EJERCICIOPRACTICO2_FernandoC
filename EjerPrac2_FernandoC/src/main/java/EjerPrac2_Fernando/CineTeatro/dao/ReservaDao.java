@@ -6,6 +6,8 @@
 package EjerPrac2_Fernando.CineTeatro.dao;
 import EjerPrac2_Fernando.CineTeatro.domain.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import EjerPrac2_Fernando.CineTeatro.domain.Usuario;
 
 /**
  *
@@ -13,4 +15,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface ReservaDao extends JpaRepository<Reserva, Integer> {
+    List<Reserva> findByUsuario(Usuario usuario);
 }
